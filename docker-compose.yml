@@ -1,8 +1,6 @@
 services:
   logger:
-    build:
-      - context: app
-      - dockerfile: ./backend/Dockerfile
+    build: ./app
     container_name: little-logger
     restart: unless-stopped
     ports:
