@@ -1,0 +1,13 @@
+services:
+  logger:
+    build:
+      - context: app
+      - dockerfile: ./backend/Dockerfile
+    container_name: little-logger
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:$PORT:8000"
+    volumes:
+      - type: bind
+        source: $DATA_DIR
+        target: /db
