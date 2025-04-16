@@ -16,7 +16,7 @@ RUN pip3 install "fastapi[standard]"
 EXPOSE 8000
 
 COPY server.py /app/server.py
-COPY lib/db.py /app/lib/ldb.py
+COPY lib/db.py /app/lib/db.py
 
 WORKDIR /app
 
