@@ -45,7 +45,7 @@ def root(log: LogEntry, application: str):
     #log = jsonable_encoder(logRaw)
     now = datetime.now(ZoneInfo(os.environ["TZ"]))
     nowString = now.strftime("%Y-%m-%d %H:%m:%S")
-    print("{}: new log: {}".format(nowString, log.message))
+    print("{}: new log for {}: {}".format(nowString, application, log.message))
     nowTimeStamp = int(now.timestamp())
     log.message["timestamp"] = nowTimeStamp
     dblocation = "/db/logs-{}.db".format(application)
