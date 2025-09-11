@@ -100,7 +100,7 @@ def insert(dbname, query, datatuple, tableName, verbose):
                 if count > 5:
                     keepTrying = False
                 if verbose:
-                    print("Error: {} on attempt {}. '{}'".format(e, count, query))
+                    print("Error on {}: {} on attempt {}. '{}'".format(dbname, e, count, query))
     con.commit()
     con.close()
 
