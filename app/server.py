@@ -86,7 +86,10 @@ def read_root(application: str, time: str = "", filter: bool | None = False, key
         if filterQuery == "":
             filterQuery = " WHERE {} LIKE '%{}%' COLLATE NOCASE ".format(key, value)
         else:
-            filterQuery = "{}WHERE {} LIKE '%{}%' COLLATE NOCASE ".format(filterQuery, key, value)
+            if "WHERE" in filterQuery:
+                filterQuery = "{}AND WHERE {} LIKE '%{}%' COLLATE NOCASE ".format(filterQuery, key, value)
+            else:
+                filterQuery = "{}WHERE {} LIKE '%{}%' COLLATE NOCASE ".format(filterQuery, key, value)
     query = "SELECT * FROM logs{} ORDER BY timestamp desc".format(filterQuery)
     if limit != None:
         query = "{} LIMIT {}".format(query, limit)
